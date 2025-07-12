@@ -7,7 +7,6 @@ function showNotification(message, type = 'success') {
         <span>${message}</span>
     `;
     
-    // Add notification styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -34,7 +33,6 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
-// Add CSS animation for notifications
 function addNotificationStyles() {
     const style = document.createElement('style');
     style.textContent = `
@@ -63,7 +61,6 @@ function addNotificationStyles() {
     document.head.appendChild(style);
 }
 
-// Additional utility functions
 function exportEmployees() {
     const dataStr = JSON.stringify(employees, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -74,7 +71,6 @@ function exportEmployees() {
     linkElement.click();
 }
 
-// Initialize notification styles when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     addNotificationStyles();
 });

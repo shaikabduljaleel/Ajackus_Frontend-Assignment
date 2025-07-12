@@ -37,7 +37,6 @@ function renderEmployees() {
     `).join('');
 }
 
-// Add loading state for better UX
 function showLoading() {
     const grid = document.getElementById('employeeGrid');
     grid.innerHTML = `
@@ -48,7 +47,6 @@ function showLoading() {
     `;
 }
 
-// Add some animation effects
 function animateCard(element) {
     element.style.transform = 'scale(0.95)';
     setTimeout(() => {

@@ -80,7 +80,6 @@ function toggleFilterSidebar(show) {
     }
 }
 
-// Performance optimization: debounce search
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {

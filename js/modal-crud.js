@@ -105,7 +105,6 @@ function validateForm() {
         showValidationError('emailError', 'Please enter a valid email address');
         isValid = false;
     } else {
-        // Check for duplicate email (excluding current employee when editing)
         const existingEmployee = employees.find(emp => 
             emp.email.toLowerCase() === email.toLowerCase() && 
             emp.id !== editingEmployeeId

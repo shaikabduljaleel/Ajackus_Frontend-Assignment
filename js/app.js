@@ -17,33 +17,29 @@ let employees = [
     { id: 15, firstName: 'Kevin', lastName: 'Harris', email: 'kevin.harris@company.com', department: 'Marketing', role: 'Coordinator' }
 ];
 
-// Application state
 let filteredEmployees = [...employees];
 let currentPage = 1;
 let itemsPerPage = 10;
 let editingEmployeeId = null;
 
-// Initialize application
 document.addEventListener('DOMContentLoaded', function() {
     renderEmployees();
     setupEventListeners();
     renderPagination();
 });
 
-// Setup event listeners
 function setupEventListeners() {
-    // Search functionality with debounce
+
     document.getElementById('searchInput').addEventListener('input', 
         debounce(applyFilters, 300)
     );
 
-    // Form submission
+    
     document.getElementById('employeeForm').addEventListener('submit', function(e) {
         e.preventDefault();
         handleFormSubmit();
     });
 
-    // Close modal on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeModal();
@@ -51,31 +47,27 @@ function setupEventListeners() {
         }
     });
 
-    // Close filter sidebar when clicking overlay
     document.getElementById('overlay').addEventListener('click', function() {
         toggleFilterSidebar(false);
         closeModal();
     });
 
-    // Prevent closing when clicking inside the sidebar
+    
     document.getElementById('filterSidebar').addEventListener('click', function(e) {
         e.stopPropagation();
     });
 
-    // Prevent closing when clicking inside the modal
+    
     document.querySelector('.modal-content').addEventListener('click', function(e) {
         e.stopPropagation();
     });
 
-    // Keyboard shortcuts
     document.addEventListener('keydown', function(e) {
-        // Ctrl/Cmd + N for new employee
         if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
             e.preventDefault();
             openAddModal();
         }
         
-        // Ctrl/Cmd + F for search focus
         if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
             e.preventDefault();
             document.getElementById('searchInput').focus();
@@ -83,12 +75,10 @@ function setupEventListeners() {
     });
 }
 
-// Initialize with sample data on first load
 function initializeApp() {
     renderEmployees();
     renderPagination();
     
-    // Add welcome message for first-time users
     if (employees.length === 0) {
         const grid = document.getElementById('employeeGrid');
         grid.innerHTML = `
